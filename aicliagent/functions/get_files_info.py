@@ -1,3 +1,4 @@
+# For our AI Agent to make changes in the code it first need to have access by getting all the info and contents.
 import os
 
 def get_files_info(working_directory, directory=None):
