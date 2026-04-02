@@ -1,4 +1,5 @@
 # Environment variables
+#Safety first
 .env
 .env.local
 .env.development
