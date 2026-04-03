@@ -4,7 +4,7 @@ from config import MAX_CHARS
 def get_file_content(working_directory, file_path):
     abs_working_dir = os.path.abspath(working_directory)
     abs_file_path = os.path.abspath(os.path.join(working_directory, file_path))
-    if abs_directory.startswith(abs_working_dir):
+    if not abs_file_path.startswith(abs_working_dir):
         return f"Error: {file_path} is not a subdirectory of {working_directory}"
     if not os.path.isfile(abs_file_path):
         return f"Error: {file_path} is not a file"
