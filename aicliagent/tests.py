@@ -1,12 +1,11 @@
-from operator import ge
-from webbrowser import get
 from functions.get_files_info import get_files_info
+from functions.get_files_content import get_file_content
+from functions.write_files import write_file
 
 def main():
-    print(get_files_info("calculator"))
-    root_contents = get_files_info(working_directory=".")
-    print(root_contents)
-    pkg_contents = get_files_info(working_directory=".", directory="pkg")
-    print(pkg_contents)
-    pkg_contents = get_files_info(working_directory=".", directory="../")
-    print(pkg_contents)
+    working_directory = "calculator"
+    # print(write_file("calculator", "lorem.txt", "Wait, this is a test file."))
+    # print(write_file("calculator", "pkg/lorem2.txt", "Wait, this is a another test file."))
+    print(write_file("calculator", "pkg2/temp.txt", "this should be allowed"))
+ 
+main()
