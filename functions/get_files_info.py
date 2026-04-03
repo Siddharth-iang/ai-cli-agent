@@ -1,3 +1,5 @@
+# For our AI Agent to make changes in the code it first need to have access by getting all the info and contents.
+# This file does it for us and shows the contents with their details like file_size, is_dir
 import os
 
 def get_files_info(working_directory:str, directory = "."):
