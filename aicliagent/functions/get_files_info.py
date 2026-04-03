@@ -2,13 +2,9 @@
 # This file does it for us and shows the contents with their details like file_size, is_dir
 import os
 
-def get_files_info(working_directory, directory=None):
+def get_files_info(working_directory:str, directory = "."):
     abs_working_dir = os.path.abspath(working_directory)
-    abs_directory = ""
-    if directory is None:
-        abs_directory = os.path.abspath(working_directory)
-    else:
-        abs_directory = os.path.abspath(os.path.join(working_directory, directory))
+    abs_directory = os.path.abspath(os.path.join(working_directory, directory))
     if not abs_directory.startswith(abs_working_dir):
         return f"{directory} is not a subdirectory of {working_directory}"
 
