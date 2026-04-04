@@ -61,11 +61,12 @@ def main():
             print(f"Calling function: {function_call_part.name}({function_call_part.args})")
             
             # Handle function calls
+            # Agent can chose to call get_files_info() function
             if function_call_part.name == "get_files_info":
                 directory = function_call_part.args.get("directory", ".")
                 result = get_files_info(".", directory)
                 print(result)
-                return  # Exit after function call
+                return 
     
     print(response.text)
 
