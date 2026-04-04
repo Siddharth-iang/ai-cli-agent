@@ -65,16 +65,11 @@ def main():
 
     if response.function_calls:
         for function_call_part in response.function_calls:
-            print(f"Calling function: {function_call_part.name}({function_call_part.args})")
-            
-            # Handle function calls
-            if function_call_part.name == "get_files_info":
-                directory = function_call_part.args.get("directory", ".")
-                result = get_files_info(".", directory)
-                print(result)
-                return  # Exit after function call
-    
-    print(response.text)
+            result = call_function(function_call_part, verbose_flag)
+            print(result)
+               
+    else:
+        print(response.text)
 
 
 if __name__ == "__main__":
