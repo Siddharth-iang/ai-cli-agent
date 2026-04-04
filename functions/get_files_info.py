@@ -1,6 +1,8 @@
 # For our AI Agent to make changes in the code it first need to have access by getting all the info and contents.
 # This file does it for us and shows the contents with their details like file_size, is_dir
 import os
+from google.genai import types
+
 
 def get_files_info(working_directory:str, directory = "."):
     abs_working_dir = os.path.abspath(working_directory)
@@ -17,5 +19,18 @@ def get_files_info(working_directory:str, directory = "."):
         final_response += f"- {content}: file_size = {size} bytes, is_dir={is_dir}"
     return final_response
 
+schema_get_files_info = types.FunctionDeclaration(
+    name="get_files_info",
+    description="Lists files in a specified directory relative to the working directory, providing file size and directory status",
+    parameters=types.Schema(
+        type=types.Type.OBJECT,
+        properties={
+            "directory": types.Schema(
+                type=types.Type.STRING,
+                description="Directory path to list files from, relative to the working directory (default is the working directory itself)",
+            ),
+        },
+    ),
+)
     
     
