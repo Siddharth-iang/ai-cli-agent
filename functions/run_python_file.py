@@ -1,6 +1,7 @@
 from ntpath import isfile
 import os
 import subprocess
+from google.genai import types
 
 def run_python_file(working_directory, file_path, args=[]):
     abs_working_dir = os.path.abspath(working_directory)
@@ -32,5 +33,25 @@ def run_python_file(working_directory, file_path, args=[]):
         return final_string
     except Exception as e:
         return f"Error: executing Python file: {e}"
+
+schema_run_python_file = types.FunctionDeclaration(
+    name="run_python_file",
+    description="Runs a Python file with python interpreter. Accepts additional CLI args as an optional array",
+    parameters=types.Schema(
+        type=types.Type.OBJECT,
+        properties={
+            "file_path": types.Schema(
+                type=types.Type.STRING,
+                description="File to run, relative to the working directory (default is the working directory itself)",
+            ),
+            "args": types.Schema(
+                type=types.Type.ARRAY,
+                items=types.Schema(type=types.Type.STRING),
+                description="An optional array of strings to pass to the Python file",
+            ),
+        },
+        required=["file_path"],
+    ),
+)
     
     
